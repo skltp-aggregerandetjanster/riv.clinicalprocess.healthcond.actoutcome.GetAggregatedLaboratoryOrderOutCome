@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
 		<artifactId>GetAggregatedLaboratoryOrderOutCome-parent</artifactId>
-		<version>1.0.0-RC5</version>
+		<version>1.0.0-RC6-SNAPSHOT</version>
 	</parent>
 
 	<properties>
