@@ -18,7 +18,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   	<groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
 		<artifactId>GetAggregatedLaboratoryOrderOutCome-parent</artifactId>
-		<version>1.0.0-RC5</version>
+		<version>1.0.0-RC6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GetAggregatedLaboratoryOrderOutCome-parent</name>
 
@@ -26,7 +26,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutCome</url>
 			<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutCome.git</connection>
 			<developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutCome.git</developerConnection>
-      <tag>v1.0.0-RC5</tag>
+      <tag>HEAD</tag>
   	</scm>
 
     <modules>
