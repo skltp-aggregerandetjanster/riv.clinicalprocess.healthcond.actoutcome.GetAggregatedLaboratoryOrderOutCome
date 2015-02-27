@@ -4,7 +4,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.check.HttpCheck
 
-object GetAggregatedReferralOutcomePingForConfigurationScenario {
+object GetAggregatedLaboratoryOrderOutcomePingForConfigurationScenario {
   
   val headers = Map(
     "Accept-Encoding"                        -> "gzip,deflate",
@@ -13,15 +13,15 @@ object GetAggregatedReferralOutcomePingForConfigurationScenario {
     "Keep-Alive"                             -> "115")
 
   val request = exec(
-        http("GetAggregatedReferralOutcomePingForConfiguration")
+        http("GetAggregatedLaboratoryOrderOutcomePingForConfiguration")
           .post("")
           .headers(headers)
-          .body(RawFileBody("GetReferralOutcomePingForConfiguration.xml"))
+          .body(RawFileBody("GetLaboratoryOrderOutcomePingForConfiguration.xml"))
           .check(status.is(200))
           .check(substring("Applikation"))
-          .check(substring("GetAggregatedReferralOutcome"))
+          .check(substring("GetAggregatedLaboratoryOrderOutcome"))
           .check(xpath("soap:Envelope", List("soap" -> "http://schemas.xmlsoap.org/soap/envelope/")).exists)
-          .check(regex("GetAggregatedReferralOutcome").exists)
+          .check(regex("GetAggregatedLaboratoryOrderOutcome").exists)
       )
   }
 
@@ -49,7 +49,7 @@ object GetAggregatedReferralOutcomePingForConfigurationScenario {
       <pingDateTime>20150226110001</pingDateTime>
       <configuration>
         <name>Applikation</name>
-        <value>GetAggregatedReferralOutcome</value>
+        <value>GetAggregatedLaboratoryOrderOutcome</value>
       </configuration>
     </PingForConfigurationResponse>
   </soap:Body>

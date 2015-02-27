@@ -4,14 +4,14 @@ import scala.concurrent.duration._
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
-import scenarios.GetAggregatedReferralOutcomeScenario
+import scenarios.GetAggregatedLaboratoryOrderOutcomeScenario
 
 /**
- * Load test VP:GetAggregatedReferralOutcome.
+ * Smoke test VP:GetAggregatedLaboratoryOrderOutcome.
  */
 class TP02Smoke extends Simulation {
 
-  val baseURL             = "https://qa.esb.ntjp.se/vp/clinicalprocess/healthcond/actoutcome/GetReferralOutcome/3/rivtabp21"
+  val baseURL             = "https://qa.esb.ntjp.se/vp/clinicalprocess/healthcond/actoutcome/GetLaboratoryOrderOutcome/3/rivtabp21"
   
   val testDuration        =      2 minutes
   val numberOfConcurrentUsers = 10
@@ -26,7 +26,7 @@ class TP02Smoke extends Simulation {
                    exec(session => {
                      session.set("status","200").set("patientid","121212121212").set("name","Tolvan Tolvansson").set("count","3")
                    })    
-                   .exec(GetAggregatedReferralOutcomeScenario.request)
+                   .exec(GetAggregatedLaboratoryOrderOutcomeScenario.request)
                    .pause(minWaitDuration, maxWaitDuration)
                   }
                  
