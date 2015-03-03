@@ -1,4 +1,4 @@
-package agp
+package laboratoryorderoutcome
 
 import scala.concurrent.duration._
 import io.gatling.core.Predef._
@@ -13,7 +13,7 @@ class TP00WarmUp extends Simulation {
 
 
 //val baseURL             = "https://test.esb.ntjp.se/vp/clinicalprocess/healthcond/actoutcome/GetLaboratoryOrderOutcome/3/rivtabp21"
-//val baseURL             = "http://ine-dit-app02.sth.basefarm.net:9014/GetAggregatedLaboratoryOrderOutcome/service/v3"
+//val baseURL             = "http://ine-dit-app02.sth.basefarm.net:9007/GetAggregatedLaboratoryOrderOutcome/service/v3"
   val baseURL             = "https://qa.esb.ntjp.se/vp/clinicalprocess/healthcond/actoutcome/GetLaboratoryOrderOutcome/3/rivtabp21"
 
   val testDuration      = 30 seconds

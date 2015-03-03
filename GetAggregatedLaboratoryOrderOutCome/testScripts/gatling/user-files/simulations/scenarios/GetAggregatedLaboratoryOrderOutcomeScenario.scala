@@ -27,10 +27,3 @@ object GetAggregatedLaboratoryOrderOutcomeScenario {
       )
 }
 
-/*
-<soapenv:Envelope
-</soapenv:Envelope>
-
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:riv:interoperability:headers:1" xmlns:urn1="urn:riv:itintegration:registry:1">
-</soapenv:Envelope>
-*/
