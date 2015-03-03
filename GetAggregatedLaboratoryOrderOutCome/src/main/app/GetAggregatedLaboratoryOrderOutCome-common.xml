@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<mule 
+<mule
 	xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:spring="http://www.springframework.org/schema/beans"
@@ -26,9 +26,9 @@
 	  <spring:import resource="classpath:aggregating-services-common.xml" />
 	  <spring:import resource="classpath:aggregating-service.xml" />
 	  <spring:import resource="classpath:PingForConfiguration-rivtabp21-service.xml" />
-	
+
 	  <!-- Load property files in three steps, here we only specify the third step that is specific for each aggregating service, see agp/src/main/app/aggregating-services-common.xml for the other two steps... -->
-	  
+
 	  <!-- 3. Replacement for org.springframework.beans.factory.config.PropertyPlaceholderConfigurer
 	       that supports decrypting encrypted property values -->
 	  <spring:bean class="org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer" id="propertyConfigurer">
@@ -36,8 +36,8 @@
 	    <spring:property name="ignoreResourceNotFound" value="true"/>
 	    <spring:property name="locations">
 	      <spring:list>
-	        <spring:value>classpath:GetAggregatedLaboratoryOrderOutCome-config.properties</spring:value>
-	        <spring:value>classpath:GetAggregatedLaboratoryOrderOutCome-config-override.properties</spring:value>
+	        <spring:value>classpath:GetAggregatedLaboratoryOrderOutcome-config.properties</spring:value>
+	        <spring:value>classpath:GetAggregatedLaboratoryOrderOutcome-config-override.properties</spring:value>
 	      </spring:list>
 	    </spring:property>
 	  </spring:bean>

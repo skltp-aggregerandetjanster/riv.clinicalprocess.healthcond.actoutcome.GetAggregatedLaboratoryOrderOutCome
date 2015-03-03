@@ -4,7 +4,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 [soi-toolkit.gen.version=0.6.2-SNAPSHOT]
 [soi-toolkit.gen.type=services]
 [soi-toolkit.gen.createDate=2014-07-28T13:57:22.823+02:00]
-[soi-toolkit.gen.artifactId=GetAggregatedLaboratoryOrderOutCome]
+[soi-toolkit.gen.artifactId=GetAggregatedLaboratoryOrderOutcome]
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -12,13 +12,13 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
 	<parent>
 		<groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
-		<artifactId>GetAggregatedLaboratoryOrderOutCome-parent</artifactId>
+		<artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
 		<version>1.0.0-RC6-SNAPSHOT</version>
 	</parent>
 
-    <artifactId>GetAggregatedLaboratoryOrderOutCome-teststub</artifactId>
+    <artifactId>GetAggregatedLaboratoryOrderOutcome-teststub</artifactId>
     <packaging>mule</packaging>
-    <name>GetAggregatedLaboratoryOrderOutCome-teststub</name>
+    <name>GetAggregatedLaboratoryOrderOutcome-teststub</name>
 
     <properties>
         <skltp.agp.version>1.2.1</skltp.agp.version>
@@ -28,13 +28,13 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 	  <!-- dependencies to the integration component that contains the services to stub -->
     <dependency>
     	<groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
-    	<artifactId>GetAggregatedLaboratoryOrderOutCome</artifactId>
+    	<artifactId>GetAggregatedLaboratoryOrderOutcome</artifactId>
     	<version>${project.version}</version>
     	<type>test-jar</type>
     </dependency>
     <dependency>
     	<groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
-    	<artifactId>GetAggregatedLaboratoryOrderOutCome</artifactId>
+    	<artifactId>GetAggregatedLaboratoryOrderOutcome</artifactId>
     	<version>${project.version}</version>
     	<classifier>core</classifier>
     </dependency>
@@ -176,7 +176,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
                                     <goal>java</goal>
                                 </goals>
                                 <configuration>
-                                    <mainClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutComeTeststubMuleServer</mainClass>
+                                    <mainClass>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutcomeTeststubMuleServer</mainClass>
                                     <classpathScope>test</classpathScope>
                                 </configuration>
                             </execution>

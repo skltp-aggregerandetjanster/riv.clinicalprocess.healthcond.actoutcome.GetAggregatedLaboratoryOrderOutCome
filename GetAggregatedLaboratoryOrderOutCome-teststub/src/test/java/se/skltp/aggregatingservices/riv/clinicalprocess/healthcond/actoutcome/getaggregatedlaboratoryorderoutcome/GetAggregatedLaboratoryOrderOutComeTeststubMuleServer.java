@@ -9,14 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class GetAggregatedLaboratoryOrderOutComeTeststubMuleServer {
+public class GetAggregatedLaboratoryOrderOutcomeTeststubMuleServer {
 
 
-	public static final String MULE_SERVER_ID   = "GetAggregatedLaboratoryOrderOutCome-teststub";
+	public static final String MULE_SERVER_ID   = "GetAggregatedLaboratoryOrderOutcome-teststub";
  
 
-	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutComeTeststubMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedLaboratoryOrderOutCome-config");
+	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutcomeTeststubMuleServer.class);
+    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedLaboratoryOrderOutcome-config");
 
 	public static void main(String[] args) throws Exception {
 

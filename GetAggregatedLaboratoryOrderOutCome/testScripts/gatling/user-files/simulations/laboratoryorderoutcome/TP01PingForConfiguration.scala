@@ -1,4 +1,4 @@
-package laboratoryorderoutcome
+package laboratoryorderOutcome
 
 import scala.concurrent.duration._
 import io.gatling.core.Predef._

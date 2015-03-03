@@ -4,7 +4,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 [soi-toolkit.gen.version=0.6.2-SNAPSHOT]
 [soi-toolkit.gen.type=schemas]
 [soi-toolkit.gen.createDate=2014-07-28T14:11:11.312+02:00]
-[soi-toolkit.gen.artifactId=GetAggregatedLaboratoryOrderOutCome]
+[soi-toolkit.gen.artifactId=GetAggregatedLaboratoryOrderOutcome]
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -12,13 +12,13 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   <parent>
     <groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
-    <artifactId>GetAggregatedLaboratoryOrderOutCome-parent</artifactId>
+    <artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
     <version>1.0.0-RC6-SNAPSHOT</version>
   </parent>
 
-	<artifactId>GetAggregatedLaboratoryOrderOutCome-schemas</artifactId>
+	<artifactId>GetAggregatedLaboratoryOrderOutcome-schemas</artifactId>
   <packaging>jar</packaging>
-  <name>GetAggregatedLaboratoryOrderOutCome-schemas</name>
+  <name>GetAggregatedLaboratoryOrderOutcome-schemas</name>
 
 	<properties>
         <!-- Properties for generating code from WSDL and XML Schemas (JAX-WS + JAXB) -->
@@ -54,7 +54,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 							<sourceRoot>${schema.gen.src.dir}</sourceRoot>
 							<wsdlOptions>
 								<wsdloption>
-				                  <wsdl>${schema.path}/TD_CLINICALPROCESS_HEALTHCOND_ACTOUTCOME_3.0_RC1/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeInteraction_3.0_RIVTABP21.wsdl</wsdl>
+				                  <wsdl>${schema.path}/TD_CLINICALPROCESS_HEALTHCOND_actoutcome_3.0_RC1/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeInteraction_3.0_RIVTABP21.wsdl</wsdl>
 				                  <extraargs>
 				                    <extraarg>-p</extraarg>
 				                    <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
@@ -109,6 +109,35 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 			</plugin>
 
 		</plugins>
-	</build>
+		<pluginManagement>
+		  <plugins>
+		    <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+		    <plugin>
+		      <groupId>org.eclipse.m2e</groupId>
+		      <artifactId>lifecycle-mapping</artifactId>
+		      <version>1.0.0</version>
+		      <configuration>
+		        <lifecycleMappingMetadata>
+		          <pluginExecutions>
+		            <pluginExecution>
+		              <pluginExecutionFilter>
+		                <groupId>org.apache.cxf</groupId>
+		                <artifactId>cxf-codegen-plugin</artifactId>
+		                <versionRange>[2.5.1,)</versionRange>
+		                <goals>
+		                  <goal>wsdl2java</goal>
+		                </goals>
+		              </pluginExecutionFilter>
+		              <action>
+		                <ignore></ignore>
+		              </action>
+		            </pluginExecution>
+		          </pluginExecutions>
+		        </lifecycleMappingMetadata>
+		      </configuration>
+		    </plugin>
+		  </plugins>
+		</pluginManagement>
+ 	</build>
 
 </project>

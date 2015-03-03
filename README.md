@@ -1,1 +1,1 @@
-# GetAggregatedLaboratoryOrderOutCome
+# GetAggregatedLaboratoryOrderOutcome

@@ -19,9 +19,9 @@ import se.riv.clinicalprocess.healthcond.actoutcome.v3.PersonIdType;
 import se.riv.clinicalprocess.healthcond.actoutcome.v3.ResultType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
-public class GetAggregatedLaboratoryOrderOutComeTestProducerDb extends TestProducerDb {
+public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProducerDb {
 
-	private static final Logger log = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutComeTestProducerDb.class);
+	private static final Logger log = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutcomeTestProducerDb.class);
 	private static final ThreadSafeSimpleDateFormat df = new ThreadSafeSimpleDateFormat("YYYYMMDDhhmmss");
 
 	@Override
@@ -31,73 +31,73 @@ public class GetAggregatedLaboratoryOrderOutComeTestProducerDb extends TestProdu
 		for (int i = 0; i < responseItems.length; i++) {
 			response.getLaboratoryOrderOutcome().add((LaboratoryOrderOutcomeType)responseItems[i]);
 		}
-		
+
 		ResultType result = new ResultType();
 		result.setResultCode(ResultCodeEnum.OK);
 		result.setLogId(UUID.randomUUID().toString());
 		result.setMessage("Ett meddelande till användaren");
 		response.setResult(result);
-		
+
 		return response;
 	}
-	
+
 	@Override
 	public Object createResponseItem(String logicalAddress, String registeredResidentId, String businessObjectId, String time) {
-		
+
 		if (log.isDebugEnabled()) {
 			log.debug("Created one response item for logical-address {}, registeredResidentId {} and businessObjectId {}",
 				new Object[] {logicalAddress, registeredResidentId, businessObjectId});
 		}
 
 		// TODO: CHANGE GENERATED CODE - START
-		
+
 		//Header start
-		LaboratoryOrderOutcomeType labOrderOutCome = new LaboratoryOrderOutcomeType();
-		
+		LaboratoryOrderOutcomeType labOrderOutcome = new LaboratoryOrderOutcomeType();
+
 		PatientSummaryHeaderType header = new PatientSummaryHeaderType();
 		header.setDocumentId(UUID.randomUUID().toString());
 		header.setSourceSystemHSAId(logicalAddress);
 		header.setDocumentTime(df.format(new Date()));
-		
+
 		PersonIdType personIdType = new PersonIdType();
 		personIdType.setId(registeredResidentId);
 		personIdType.setType("1.2.752.129.2.1.3.1");
 		header.setPatientId(personIdType);
-		
-		HealthcareProfessionalType hp = new HealthcareProfessionalType(); 
+
+		HealthcareProfessionalType hp = new HealthcareProfessionalType();
 		hp.setAuthorTime(df.format(new Date()));
 		hp.setHealthcareProfessionalHSAId(logicalAddress);
-		
+
 		OrgUnitType orgUnitType = new OrgUnitType();
 		orgUnitType.setOrgUnitHSAId(logicalAddress);
 		orgUnitType.setOrgUnitName("Organisation 1");
 		hp.setHealthcareProfessionalOrgUnit(orgUnitType);
 		header.setAccountableHealthcareProfessional(hp);
-		
+
 		header.setApprovedForPatient(true);
-		
-		labOrderOutCome.setLaboratoryOrderOutcomeHeader(header);
+
+		labOrderOutcome.setLaboratoryOrderOutcomeHeader(header);
 		//Header end
-		
+
 		//Body start
 		LaboratoryOrderOutcomeBodyType body = new LaboratoryOrderOutcomeBodyType();
 		body.setResultType("DEF");
 		body.setRegistrationTime(df.format(new Date()));
 		body.setDiscipline("Klinisk kemi");
-		
+
 		OrderType order = new OrderType();
 		order.setOrderId(UUID.randomUUID().toString());
 		body.setOrder(order);
-		
-		labOrderOutCome.setLaboratoryOrderOutcomeBody(body);
+
+		labOrderOutcome.setLaboratoryOrderOutcomeBody(body);
 		//Body end
-		
+
 		//response.setCareUnit(logicalAddress);
 		//response.setSubjectOfCareId(registeredResidentId);
 		//response.setSenderRequestId(businessObjectId);
 
 		// TODO: CHANGE GENERATED CODE - END
-		
-		return labOrderOutCome;
+
+		return labOrderOutcome;
 	}
 }

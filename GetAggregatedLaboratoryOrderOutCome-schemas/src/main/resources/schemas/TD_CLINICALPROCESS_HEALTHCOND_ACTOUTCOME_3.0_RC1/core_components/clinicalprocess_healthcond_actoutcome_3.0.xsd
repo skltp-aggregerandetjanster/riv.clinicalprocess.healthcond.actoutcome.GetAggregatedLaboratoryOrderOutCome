@@ -539,11 +539,11 @@
 
     <xs:complexType name="AnalysisOutcomeType">
         <xs:sequence>
-            <xs:element name="outcomeValue" type="xs:string"/>
-            <xs:element name="outcomeUnit" type="xs:string" minOccurs="0"/>
+            <xs:element name="OutcomeValue" type="xs:string"/>
+            <xs:element name="OutcomeUnit" type="xs:string" minOccurs="0"/>
             <xs:element name="observationTime" type="tns:TimeStampType" minOccurs="0"/>
             <xs:element name="pathologicalFlag" type="xs:boolean"/>
-            <xs:element name="outcomeDescription" type="xs:string" minOccurs="0"/>
+            <xs:element name="OutcomeDescription" type="xs:string" minOccurs="0"/>
             <xs:element name="referenceInterval" type="xs:string" minOccurs="0"/>
             <xs:element name="referencePopulation" type="xs:string" minOccurs="0"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
