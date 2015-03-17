@@ -11,7 +11,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
+    <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
     <artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
     <version>1.0.0-RC6-SNAPSHOT</version>
   </parent>
@@ -59,17 +59,17 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 				                    <extraarg>-p</extraarg>
 				                    <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
 				                    <extraarg>-p</extraarg>
-				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3=se.riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3</extraarg>
+				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3=riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3</extraarg>
 				                    <extraarg>-p</extraarg>
-				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeInitiator:3=se.riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeinitiator.v3</extraarg>
+				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeInitiator:3=riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeinitiator.v3</extraarg>
 				                    <extraarg>-p</extraarg>
-				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcome:3:rivtabp21=se.riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcome.v3.rivtabp21</extraarg>
+				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcome:3:rivtabp21=riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcome.v3.rivtabp21</extraarg>
 				                    <extraarg>-p</extraarg>
-				                    <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+				                    <extraarg>urn:riv:itintegration:registry:1=riv.itintegration.registry.v1</extraarg>
 				                    <extraarg>-p</extraarg>
-				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:3=se.riv.clinicalprocess.healthcond.actoutcome.v3</extraarg>
+				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:3=riv.clinicalprocess.healthcond.actoutcome.v3</extraarg>
 				                    <extraarg>-p</extraarg>
-				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:enums:3=se.riv.clinicalprocess.healthcond.actoutcome.enums.v3</extraarg>
+				                    <extraarg>urn:riv:clinicalprocess:healthcond:actoutcome:enums:3=riv.clinicalprocess.healthcond.actoutcome.enums.v3</extraarg>
 				                  </extraargs>
 				                </wsdloption>
 							</wsdlOptions>

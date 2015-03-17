@@ -27,8 +27,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
-import se.riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutcomeMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
@@ -101,9 +101,7 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 	 */
     @Test
     public void test_ok_one_hit() {
-
-    	List<ProcessingStatusRecordType> statusList = doTest(TEST_RR_ID_ONE_HIT, 1, new ExpectedTestData(TEST_BO_ID_ONE_HIT, TEST_LOGICAL_ADDRESS_1));
-
+    	List<ProcessingStatusRecordType> statusList = doTest(TEST_RR_ID_ONE_HIT, 2, new ExpectedTestData(TEST_BO_ID_ONE_HIT, TEST_LOGICAL_ADDRESS_1));
     	assertProcessingStatusDataFromSource(statusList.get(0), TEST_LOGICAL_ADDRESS_1);
     }
 

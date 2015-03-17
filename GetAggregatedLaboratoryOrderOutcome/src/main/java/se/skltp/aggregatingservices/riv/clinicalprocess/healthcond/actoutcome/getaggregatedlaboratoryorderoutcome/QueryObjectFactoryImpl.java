@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.jaxb.JaxbUtil;
 import org.w3c.dom.Node;
 
-import se.riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeType;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.service.api.QueryObjectFactory;
@@ -28,22 +28,22 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
 
 	/**
 	 * Transformerar GetLaboratoryOrderOutcome request till EI FindContent request enligt:
-	 * 
+	 *
 	 * 1. patientId --> registeredResidentIdentification
 	 * 2. "riv:clinicalprocess:healthcond:actoutcome" --> serviceDomain
 	 * 3. "und-kkm-ure" --> categorization
 	 */
 	@Override
 	public QueryObject createQueryObject(Node node) {
-		
+
 		GetLaboratoryOrderOutcomeType request = (GetLaboratoryOrderOutcomeType)ju.unmarshal(node);
-		
+
 		if (log.isDebugEnabled()) log.debug("Transformed payload for pid: {}", request.getPatientId().getId());
 
-		FindContentType fc = new FindContentType();		
+		FindContentType fc = new FindContentType();
 		fc.setRegisteredResidentIdentification(request.getPatientId().getId());
 		fc.setServiceDomain(eiServiceDomain);
-		
+
 		//TKB 4.1	Uppdatering av engagemangsindex
 		//Infomängd enl. Tjänstekontrakt	Värde på Categorization
 		// GetMaternityMedicalHistory	utr-mtr
@@ -51,8 +51,8 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
 		//*GetLaboratoryOrderOutcome	und-kkm-ure
 		// GetECGOutcome	und-ekg-ure
 		// GetImagingOutcome	und-bdi-ure
-		fc.setCategorization(eiCategorization); 
-		
+		fc.setCategorization(eiCategorization);
+
 		QueryObject qo = new QueryObject(fc, request);
 
 		return qo;

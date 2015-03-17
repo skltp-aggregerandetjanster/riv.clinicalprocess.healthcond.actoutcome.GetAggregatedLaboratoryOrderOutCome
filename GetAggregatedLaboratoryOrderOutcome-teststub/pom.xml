@@ -11,7 +11,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>se.skltp.aggregatingservices.clinicalprocess.healthcond.actoutcome</groupId>
+		<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
 		<artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
 		<version>1.0.0-RC6-SNAPSHOT</version>
 	</parent>
@@ -21,7 +21,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
     <name>GetAggregatedLaboratoryOrderOutcome-teststub</name>
 
     <properties>
-        <skltp.agp.version>1.2.1</skltp.agp.version>
+        <skltp.agp.version>1.2.3</skltp.agp.version>
     </properties>
 
 	<dependencies>

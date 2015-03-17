@@ -7,16 +7,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
-import se.riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
-import se.riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.HealthcareProfessionalType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeBodyType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.OrderType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.OrgUnitType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.PatientSummaryHeaderType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.PersonIdType;
-import se.riv.clinicalprocess.healthcond.actoutcome.v3.ResultType;
+import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.HealthcareProfessionalType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeBodyType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.OrderType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.OrgUnitType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.PatientSummaryHeaderType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.PersonIdType;
+import riv.clinicalprocess.healthcond.actoutcome.v3.ResultType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProducerDb {
