@@ -25,10 +25,10 @@ class TP00WarmUp extends Simulation {
 
   val warmUp = scenario("warm up")
                  .repeat(times) {
-                   feed(csv("patients.csv").queue)
-//                   exec(session => {
-//                     session.set("status","200").set("patientid","121212121212").set("name","Tolvan Tolvansson").set("count","3")
-//                   })    
+//                 feed(csv("patients.csv").queue)
+                   exec(session => {
+                     session.set("status","200").set("patientid","121212121212").set("name","Tolvan Tolvansson").set("count","3")
+                   })    
                    .exec(GetAggregatedLaboratoryOrderOutcomeScenario.request)
                    .pause(1 second)
                   }

@@ -19,8 +19,8 @@ object GetAggregatedLaboratoryOrderOutcomePingForConfigurationScenario {
           .body(RawFileBody("GetLaboratoryOrderOutcomePingForConfiguration.xml"))
           .check(status.is(200))
           .check(substring("Applikation"))
-          .check(substring("GetAggregatedLaboratoryOrderOutcome"))
+          .check(substring("GetAggregatedLaboratoryOrderOut"))
           .check(xpath("soap:Envelope", List("soap" -> "http://schemas.xmlsoap.org/soap/envelope/")).exists)
-          .check(regex("GetAggregatedLaboratoryOrderOutcome").exists)
+          .check(regex("GetAggregatedLaboratoryOrderOut").exists)
       )
 }
