@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
 import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
-import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
 import riv.clinicalprocess.healthcond.actoutcome.v3.HealthcareProfessionalType;
 import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeBodyType;
 import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
