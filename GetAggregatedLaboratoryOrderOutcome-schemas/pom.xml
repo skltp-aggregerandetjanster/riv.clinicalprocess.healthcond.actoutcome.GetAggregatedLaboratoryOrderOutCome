@@ -13,7 +13,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
   <parent>
     <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
     <artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
-    <version>1.0.0-RC7</version>
+    <version>1.0.0-RC8</version>
   </parent>
 
 	<artifactId>GetAggregatedLaboratoryOrderOutcome-schemas</artifactId>
@@ -54,7 +54,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 							<sourceRoot>${schema.gen.src.dir}</sourceRoot>
 							<wsdlOptions>
 								<wsdloption>
-				                  <wsdl>${schema.path}/TD_CLINICALPROCESS_HEALTHCOND_ACTOUTCOME_3.0_RC1/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeInteraction_3.0_RIVTABP21.wsdl</wsdl>
+				                  <wsdl>${schema.path}/TD_CLINICALPROCESS_HEALTHCOND_ACTOUTCOME_3.1/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeInteraction_3.0_RIVTABP21.wsdl</wsdl>
 				                  <extraargs>
 				                    <extraarg>-p</extraarg>
 				                    <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
