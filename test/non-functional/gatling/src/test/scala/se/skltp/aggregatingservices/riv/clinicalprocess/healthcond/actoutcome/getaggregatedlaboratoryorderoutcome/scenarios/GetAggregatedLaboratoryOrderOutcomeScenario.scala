@@ -11,8 +11,8 @@ object GetAggregatedLaboratoryOrderOutcomeScenario {
     "Accept-Encoding"                        -> "gzip,deflate",
     "Content-Type"                           -> "text/xml;charset=UTF-8",
     "SOAPAction"                             -> "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3:GetLaboratoryOrderOutcome",
-    "x-vp-sender-id"                         -> "test",
-    "x-rivta-original-serviceconsumer-hsaid" -> "test",
+    "x-vp-sender-id"                         -> "SE5565594230-B9P",
+    "x-rivta-original-serviceconsumer-hsaid" -> "NonFunctionalTest - Gatling",
     "Keep-Alive"                             -> "115")
 
   val request = exec(
@@ -26,4 +26,3 @@ object GetAggregatedLaboratoryOrderOutcomeScenario {
           .check(xpath("//ns3:laboratoryOrderOutcome", List("ns3" -> "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3")).count.is(session => session("count").as[String].toInt))
       )
 }
-
