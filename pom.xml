@@ -11,14 +11,14 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 	<modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.soitoolkit.commons.poms</groupId>
-        <artifactId>soitoolkit-default-parent</artifactId>
-        <version>0.6.1</version>
+        <groupId>se.skltp.commons</groupId>
+        <artifactId>skltp-commons-mule-parent</artifactId>
+        <version>1.0.0</version>
     </parent>
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
 		<artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
-		<version>1.0.0-RC8</version>
+		<version>1.0.0-RC9-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GetAggregatedLaboratoryOrderOutcome-parent</name>
 
@@ -26,7 +26,7 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome</url>
 			<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome.git</connection>
 			<developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome.git</developerConnection>
-      <tag>v1.0.0-RC8</tag>
+      <tag>HEAD</tag>
   	</scm>
 
     <modules>

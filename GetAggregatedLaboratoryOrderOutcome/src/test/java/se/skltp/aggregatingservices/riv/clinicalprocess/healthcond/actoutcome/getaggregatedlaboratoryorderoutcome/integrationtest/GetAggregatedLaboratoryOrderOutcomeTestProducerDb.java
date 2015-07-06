@@ -26,17 +26,18 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 
 	@Override
 	public Object createResponse(Object... responseItems) {
-		log.debug("Creates a response with {} items", responseItems);
+		log.info("Creating a response with {} items", responseItems.length);
 		GetLaboratoryOrderOutcomeResponseType response = new GetLaboratoryOrderOutcomeResponseType();
 		for (int i = 0; i < responseItems.length; i++) {
 			response.getLaboratoryOrderOutcome().add((LaboratoryOrderOutcomeType)responseItems[i]);
 		}
 
 		ResultType result = new ResultType();
-		result.setResultCode(ResultCodeEnum.OK);
+		result.setResultCode(ResultCodeEnum.INFO);
 		result.setLogId(UUID.randomUUID().toString());
 		result.setMessage("Ett meddelande till användaren");
 		response.setResult(result);
+		log.info("response.toString:" + response.toString());
 
 		return response;
 	}
@@ -44,14 +45,9 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 	@Override
 	public Object createResponseItem(String logicalAddress, String registeredResidentId, String businessObjectId, String time) {
 
-		if (log.isDebugEnabled()) {
-			log.debug("Created one response item for logical-address {}, registeredResidentId {} and businessObjectId {}",
+        log.debug("Created LaboratoryOrderOutcomeType for logical-address {}, registeredResidentId {} and businessObjectId {}",
 				new Object[] {logicalAddress, registeredResidentId, businessObjectId});
-		}
 
-		// TODO: CHANGE GENERATED CODE - START
-
-		//Header start
 		LaboratoryOrderOutcomeType labOrderOutcome = new LaboratoryOrderOutcomeType();
 
 		PatientSummaryHeaderType header = new PatientSummaryHeaderType();
@@ -95,8 +91,6 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 		//response.setCareUnit(logicalAddress);
 		//response.setSubjectOfCareId(registeredResidentId);
 		//response.setSenderRequestId(businessObjectId);
-
-		// TODO: CHANGE GENERATED CODE - END
 
 		return labOrderOutcome;
 	}

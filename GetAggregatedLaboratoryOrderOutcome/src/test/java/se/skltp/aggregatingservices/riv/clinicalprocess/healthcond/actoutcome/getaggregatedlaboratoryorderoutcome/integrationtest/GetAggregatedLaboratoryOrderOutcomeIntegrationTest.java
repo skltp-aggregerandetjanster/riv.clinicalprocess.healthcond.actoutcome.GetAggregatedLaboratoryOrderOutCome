@@ -2,6 +2,8 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.g
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static se.skltp.agp.riv.interoperability.headers.v1.CausingAgentEnum.VIRTUALIZATION_PLATFORM;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_ORIGINAL_CONSUMER_HSAID;
 import static se.skltp.agp.test.consumer.AbstractTestConsumer.SAMPLE_SENDER_ID;
@@ -27,6 +29,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
+import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ErrorCodeEnum;
+import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
 import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutcomeMuleServer;
@@ -163,21 +167,29 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 		GetAggregatedLaboratoryOrderOutcomeTestConsumer consumer = new GetAggregatedLaboratoryOrderOutcomeTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId ,originalConsumerHsaId);
 		Holder<GetLaboratoryOrderOutcomeResponseType> responseHolder = new Holder<GetLaboratoryOrderOutcomeResponseType>();
 		Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
+		
     	consumer.callService(LOGICAL_ADDRESS, registeredResidentId, processingStatusHolder, responseHolder);
 
     	// Verify the response size and content
     	GetLaboratoryOrderOutcomeResponseType response = responseHolder.value;
-    	int expextedResponseSize = testData.length;
-		assertEquals(expextedResponseSize, response.getLaboratoryOrderOutcome().size());
+    	int expectedResponseSize = testData.length;
+		assertEquals(expectedResponseSize, response.getLaboratoryOrderOutcome().size());
 
 		for (int i = 0; i < testData.length; i++) {
 			LaboratoryOrderOutcomeType responseElement = response.getLaboratoryOrderOutcome().get(i);
 			assertEquals(registeredResidentId, responseElement.getLaboratoryOrderOutcomeHeader().getPatientId().getId());
-
-			// TODO: CHANGE GENERATED CODE - START
-			//assertEquals(testData[i].getExpectedBusinessObjectId(), responseElement.getSenderRequestId());
 			assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getLaboratoryOrderOutcomeHeader().getSourceSystemHSAId());
-			// TODO: CHANGE GENERATED CODE - END
+		}
+		
+		if (response.getLaboratoryOrderOutcome().size() < 1) {
+            assertNotNull(response.getResult());
+            assertNotNull(response.getResult().getResultCode());
+		} else {
+    		assertNotNull(response.getResult());
+            assertNotNull(response.getResult().getResultCode());
+            assertTrue(response.getResult().getResultCode() == ResultCodeEnum.INFO);
+            assertTrue(response.getResult().getLogId() != null);
+            assertTrue(response.getResult().getLogId().length() > 1);
 		}
 
     	// Verify the size of the processing status and return it for further analysis

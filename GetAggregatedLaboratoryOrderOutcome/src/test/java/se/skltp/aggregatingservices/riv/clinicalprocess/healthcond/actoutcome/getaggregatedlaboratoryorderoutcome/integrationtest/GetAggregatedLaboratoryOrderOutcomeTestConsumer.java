@@ -40,17 +40,14 @@ public class GetAggregatedLaboratoryOrderOutcomeTestConsumer extends AbstractTes
 
 	public void callService(String logicalAddress, String registeredResidentId, Holder<ProcessingStatusType> processingStatusHolder, Holder<GetLaboratoryOrderOutcomeResponseType> responseHolder) {
 
-		log.debug("Calling GetRequestActivities-soap-service with Registered Resident Id = {}", registeredResidentId);
+		log.debug("Calling GetRequestActivities-soap-service with registered resident id = {}", registeredResidentId);
 
 		GetLaboratoryOrderOutcomeType request = new GetLaboratoryOrderOutcomeType();
 
-		// TODO: CHANGE GENERATED CODE - START
 		PersonIdType personIdType = new PersonIdType();
 		personIdType.setId(registeredResidentId);
-		personIdType.setType("1.2.752.129.2.1.3.1");//Fältregler GetLaboratoryOrderOutcome från TKB
+		personIdType.setType("1.2.752.129.2.1.3.1");
 		request.setPatientId(personIdType);
-		// TODO: CHANGE GENERATED CODE - END
-
 
 		GetLaboratoryOrderOutcomeResponseType response = _service.getLaboratoryOrderOutcome(logicalAddress, request);
 		responseHolder.value = response;
