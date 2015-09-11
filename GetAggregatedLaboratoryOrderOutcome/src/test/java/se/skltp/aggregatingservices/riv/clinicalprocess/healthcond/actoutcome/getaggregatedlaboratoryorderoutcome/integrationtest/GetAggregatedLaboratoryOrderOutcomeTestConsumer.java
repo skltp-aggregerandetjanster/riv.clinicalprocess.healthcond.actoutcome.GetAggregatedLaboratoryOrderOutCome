@@ -24,7 +24,7 @@ public class GetAggregatedLaboratoryOrderOutcomeTestConsumer extends AbstractTes
 		String serviceAddress = GetAggregatedLaboratoryOrderOutcomeMuleServer.getAddress("SERVICE_INBOUND_URL");
 		String personnummer = TEST_RR_ID_ONE_HIT;
 
-		GetAggregatedLaboratoryOrderOutcomeTestConsumer consumer = new GetAggregatedLaboratoryOrderOutcomeTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID);
+		GetAggregatedLaboratoryOrderOutcomeTestConsumer consumer = new GetAggregatedLaboratoryOrderOutcomeTestConsumer(serviceAddress, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID);
 		Holder<GetLaboratoryOrderOutcomeResponseType> responseHolder = new Holder<GetLaboratoryOrderOutcomeResponseType>();
 		Holder<ProcessingStatusType> processingStatusHolder = new Holder<ProcessingStatusType>();
 
@@ -32,10 +32,10 @@ public class GetAggregatedLaboratoryOrderOutcomeTestConsumer extends AbstractTes
 		log.info("Returned #timeslots = " + responseHolder.value.getLaboratoryOrderOutcome().size());
 	}
 
-	public GetAggregatedLaboratoryOrderOutcomeTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId) {
+	public GetAggregatedLaboratoryOrderOutcomeTestConsumer(String serviceAddress, String senderId, String originalConsumerHsaId, String correlationId) {
 
 		// Setup a web service proxy for communication using HTTPS with Mutual Authentication
-		super(GetLaboratoryOrderOutcomeResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId);
+		super(GetLaboratoryOrderOutcomeResponderInterface.class, serviceAddress, senderId, originalConsumerHsaId, correlationId);
 	}
 
 	public void callService(String logicalAddress, String registeredResidentId, Holder<ProcessingStatusType> processingStatusHolder, Holder<GetLaboratoryOrderOutcomeResponseType> responseHolder) {
