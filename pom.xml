@@ -18,20 +18,22 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
 		<artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.2.0-RC1</version>
     <packaging>pom</packaging>
     <name>GetAggregatedLaboratoryOrderOutcome-parent</name>
 
     <properties>
         <mule.version>3.7.0</mule.version>
         <skltp.agp.version>2.2</skltp.agp.version>
+        <!-- Turn off strict checking of javadoc tags for Java 8 -->
+        <additionalparam>-Xdoclint:none</additionalparam>
     </properties>
 
     <scm>
 			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome</url>
 			<connection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome.git</connection>
 			<developerConnection>scm:git:git://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>v1.2.0-RC1</tag>
   	</scm>
 
     <modules>
