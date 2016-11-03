@@ -25,11 +25,13 @@ import java.util.List;
 import javax.xml.ws.Holder;
 import javax.xml.ws.soap.SOAPFaultException;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
+import se.skltp.agp.cache.TakCacheBean;
 import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ErrorCodeEnum;
 import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
@@ -63,7 +65,15 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 //			"aggregating-services-common.xml," +
 //	        "aggregating-service.xml," +
 			"teststub-services/engagemangsindex-teststub-service.xml," +
-			"teststub-services/service-producer-teststub-service.xml";
+			"teststub-services/service-producer-teststub-service.xml, " +
+            "teststub-non-default-services/tak-teststub-service.xml";
+    }
+
+
+    @Before
+    public void loadTakCache() throws Exception {
+    	final TakCacheBean takCache = (TakCacheBean) muleContext.getRegistry().lookupObject("takCacheBean");
+    	takCache.updateCache();
     }
 
 	/**
