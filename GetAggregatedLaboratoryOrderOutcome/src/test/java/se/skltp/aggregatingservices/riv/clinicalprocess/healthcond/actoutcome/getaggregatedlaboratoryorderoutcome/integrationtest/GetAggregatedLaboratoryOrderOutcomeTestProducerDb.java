@@ -7,16 +7,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
-import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
-import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.HealthcareProfessionalType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeBodyType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.OrderType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.OrgUnitType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.PatientSummaryHeaderType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.PersonIdType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.ResultType;
+import riv.clinicalprocess.healthcond.actoutcome.enums._4.ResultCodeEnum;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcome.v4.rivtabp21.GetLaboratoryOrderOutcomeResponderInterface;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
+import riv.clinicalprocess.healthcond.actoutcome._4.AccessControlHeaderType;
+import riv.clinicalprocess.healthcond.actoutcome._4.HeaderType;
+import riv.clinicalprocess.healthcond.actoutcome._4.HealthcareProfessionalType;
+import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
+import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeBodyType;
+import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeType;
+import riv.clinicalprocess.healthcond.actoutcome._4.OrgUnitType;
+import riv.clinicalprocess.healthcond.actoutcome._4.PatientType;
+import riv.clinicalprocess.healthcond.actoutcome._4.PatientinformationType;
+import riv.clinicalprocess.healthcond.actoutcome._4.PersonIdType;
+import riv.clinicalprocess.healthcond.actoutcome._4.SourceType;
+//import riv.clinicalprocess.healthcond.actoutcome._4.ResultType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProducerDb {
@@ -32,11 +37,13 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 			response.getLaboratoryOrderOutcome().add((LaboratoryOrderOutcomeType)responseItems[i]);
 		}
 
+		/*
 		ResultType result = new ResultType();
 		result.setResultCode(ResultCodeEnum.INFO);
 		result.setLogId(UUID.randomUUID().toString());
 		result.setMessage("Ett meddelande till användaren");
 		response.setResult(result);
+		*/
 		log.info("response.toString:" + response.toString());
 
 		return response;
@@ -50,42 +57,48 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 
 		LaboratoryOrderOutcomeType labOrderOutcome = new LaboratoryOrderOutcomeType();
 
-		PatientSummaryHeaderType header = new PatientSummaryHeaderType();
-		header.setDocumentId(UUID.randomUUID().toString());
-		header.setSourceSystemHSAId(logicalAddress);
-		header.setDocumentTime(df.format(new Date()));
+		HeaderType header = new HeaderType();
+		labOrderOutcome.setLaboratoryOrderOutcomeHeader(header);
+		LaboratoryOrderOutcomeBodyType body = new LaboratoryOrderOutcomeBodyType();
+		labOrderOutcome.setLaboratoryOrderOutcomeBody(body);
+		
+		SourceType source = new SourceType();
+		IIType systemId = new IIType();
+		systemId.setRoot(logicalAddress);
+		systemId.setExtension("1.2.3");
+		source.setSystemId(systemId);
+		header.setSource(source);
 
-		PersonIdType personIdType = new PersonIdType();
-		personIdType.setId(registeredResidentId);
-		personIdType.setType("1.2.752.129.2.1.3.1");
-		header.setPatientId(personIdType);
-
+		PatientinformationType pinfo = new PatientinformationType();
+		body.setPatientinformation(pinfo);	
+		pinfo.setFodelsetidpunkt("12:12");
+		
 		HealthcareProfessionalType hp = new HealthcareProfessionalType();
-		hp.setAuthorTime(df.format(new Date()));
-		hp.setHealthcareProfessionalHSAId(logicalAddress);
+		hp.setName("Dr Hpro");
+		hp.setId(logicalAddress);
 
 		OrgUnitType orgUnitType = new OrgUnitType();
-		orgUnitType.setOrgUnitHSAId(logicalAddress);
-		orgUnitType.setOrgUnitName("Organisation 1");
-		hp.setHealthcareProfessionalOrgUnit(orgUnitType);
-		header.setAccountableHealthcareProfessional(hp);
+		orgUnitType.setName("Organisation 1");
+		IIType id = new IIType();
+		id.setRoot(logicalAddress);
+		id.setExtension("1.2.3");
+		orgUnitType.setId(id);
 
-		header.setApprovedForPatient(true);
+		AccessControlHeaderType ac = new AccessControlHeaderType();
+		header.setAccessControlHeader(ac);
+		
+		IIType patient = new IIType();
+		patient.setRoot(registeredResidentId);
+		patient.setExtension("1.2.752.129.2.1.3.1");
 
-		labOrderOutcome.setLaboratoryOrderOutcomeHeader(header);
-		//Header end
+		PatientType person = new PatientType();
+		person.getId().add(patient);
+		ac.setPatient(person);
 
 		//Body start
-		LaboratoryOrderOutcomeBodyType body = new LaboratoryOrderOutcomeBodyType();
-		body.setResultType("DEF");
-		body.setRegistrationTime(df.format(new Date()));
-		body.setDiscipline("Klinisk kemi");
+		body.setResultatkommentar("kommentar");
+		body.setResultatrapport("OK");
 
-		OrderType order = new OrderType();
-		order.setOrderId(UUID.randomUUID().toString());
-		body.setOrder(order);
-
-		labOrderOutcome.setLaboratoryOrderOutcomeBody(body);
 		//Body end
 
 		//response.setCareUnit(logicalAddress);

@@ -32,10 +32,10 @@ import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
 import se.skltp.agp.cache.TakCacheBean;
-import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ErrorCodeEnum;
-import riv.clinicalprocess.healthcond.actoutcome.enums.v3.ResultCodeEnum;
-import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v3.GetLaboratoryOrderOutcomeResponseType;
-import riv.clinicalprocess.healthcond.actoutcome.v3.LaboratoryOrderOutcomeType;
+import riv.clinicalprocess.healthcond.actoutcome.enums._4.ErrorCodeEnum;
+import riv.clinicalprocess.healthcond.actoutcome.enums._4.ResultCodeEnum;
+import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
+import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutcomeMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
@@ -192,10 +192,11 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 
 		for (int i = 0; i < testData.length; i++) {
 			LaboratoryOrderOutcomeType responseElement = response.getLaboratoryOrderOutcome().get(i);
-			assertEquals(registeredResidentId, responseElement.getLaboratoryOrderOutcomeHeader().getPatientId().getId());
-			assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getLaboratoryOrderOutcomeHeader().getSourceSystemHSAId());
+			assertEquals(registeredResidentId, responseElement.getLaboratoryOrderOutcomeHeader().getAccessControlHeader().getPatient().getId().get(0).getRoot());
+			assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getLaboratoryOrderOutcomeHeader().getSource().getSystemId().getRoot());
 		}
 		
+		/*
 		if (response.getLaboratoryOrderOutcome().size() < 1) {
             assertNotNull(response.getResult());
             assertNotNull(response.getResult().getResultCode());
@@ -206,7 +207,8 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
             assertTrue(response.getResult().getLogId() != null);
             assertTrue(response.getResult().getLogId().length() > 1);
 		}
-
+		*/
+		
     	// Verify the size of the processing status and return it for further analysis
 		ProcessingStatusType statusList = processingStatusHolder.value;
 		assertEquals(expectedProcessingStatusSize, statusList.getProcessingStatusList().size());
