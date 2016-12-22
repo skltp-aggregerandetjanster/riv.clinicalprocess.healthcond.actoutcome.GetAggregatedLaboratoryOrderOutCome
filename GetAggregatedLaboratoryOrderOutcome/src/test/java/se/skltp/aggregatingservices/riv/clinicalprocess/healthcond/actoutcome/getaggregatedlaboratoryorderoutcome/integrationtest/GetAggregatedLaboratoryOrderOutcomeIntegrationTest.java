@@ -36,6 +36,7 @@ import riv.clinicalprocess.healthcond.actoutcome.enums._4.ErrorCodeEnum;
 import riv.clinicalprocess.healthcond.actoutcome.enums._4.ResultCodeEnum;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeType;
+import se.skltp.aggregatingservices.Util;
 import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutcomeMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
@@ -49,7 +50,7 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutcomeIntegrationTest.class);
 
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedLaboratoryOrderOutcome-config");
+    private static final RecursiveResourceBundle rb = Util.getRecursiveResourceBundle();
 	private static final String SKLTP_HSA_ID = rb.getString("SKLTP_HSA_ID");
 
     private static final String LOGICAL_ADDRESS = "logical-address";

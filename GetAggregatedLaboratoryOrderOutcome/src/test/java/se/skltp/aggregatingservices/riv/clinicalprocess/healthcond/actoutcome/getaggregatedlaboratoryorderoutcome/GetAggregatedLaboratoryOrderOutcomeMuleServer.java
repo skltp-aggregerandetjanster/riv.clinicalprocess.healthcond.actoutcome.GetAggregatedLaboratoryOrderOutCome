@@ -5,6 +5,8 @@ import org.soitoolkit.commons.mule.test.StandaloneMuleServer;
 
 import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
+import se.skltp.aggregatingservices.Util;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +18,7 @@ public class GetAggregatedLaboratoryOrderOutcomeMuleServer {
 
 
 	private static final Logger logger = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutcomeMuleServer.class);
-    private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedLaboratoryOrderOutcome-config");
+    private static final RecursiveResourceBundle rb = Util.getRecursiveResourceBundle();
 
 	public static void main(String[] args) throws Exception {
 
