@@ -2,7 +2,7 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.g
 
 trait CommonParameters {
   val serviceName:String     = "LaboratoryOrderOutcome"
-  val urn:String             = "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3"
+  val urn:String             = "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
   val responseElement:String = "GetLaboratoryOrderOutcomeResponse"
   val responseItem:String    = "laboratoryOrderOutcome"
   var baseUrl:String         = if (System.getProperty("baseUrl") != null && !System.getProperty("baseUrl").isEmpty()) {
