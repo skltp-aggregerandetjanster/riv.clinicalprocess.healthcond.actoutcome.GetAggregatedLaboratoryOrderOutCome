@@ -17,29 +17,15 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome;
+package se.skltp.aggregatingservices;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.soitoolkit.commons.mule.util.RecursiveResourceBundle;
 
-import org.junit.Test;
+public class Util {
 
-public class RequestListFactoryTest {
-	
-	@Test
-	public void isPartOf(){
+	private static final RecursiveResourceBundle rb = new RecursiveResourceBundle("GetAggregatedLaboratoryOrderOutcome-4-config");
 
-		assertTrue(new RequestListFactoryImpl().isPartOf("UNIT2", "UNIT2"));
-		
-		assertTrue(new RequestListFactoryImpl().isPartOf(null, "UNIT2"));
-		
-		assertTrue(new RequestListFactoryImpl().isPartOf("", "UNIT2"));
+	public static RecursiveResourceBundle getRecursiveResourceBundle() {
+		return rb;
 	}
-	
-	@Test
-	public void isNotPartOf(){
-		assertFalse(new RequestListFactoryImpl().isPartOf("UNIT2", "UNIT3"));
-		assertFalse(new RequestListFactoryImpl().isPartOf("UNIT2", null));
-	}
-	
 }
