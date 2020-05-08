@@ -57,10 +57,10 @@ public class QueryObjectFactoryImpl implements QueryObjectFactory {
 
 		GetLaboratoryOrderOutcomeType request = (GetLaboratoryOrderOutcomeType)ju.unmarshal(node);
 
-		if (log.isDebugEnabled()) log.debug("Transformed payload for pid: {}", request.getPatientId().getId());
+		if (log.isDebugEnabled()) log.debug("Transformed payload for pid: {}", request.getPatientId().getExtension());
 
 		FindContentType fc = new FindContentType();
-		fc.setRegisteredResidentIdentification(request.getPatientId().getId());
+		fc.setRegisteredResidentIdentification(request.getPatientId().getExtension());
 		fc.setServiceDomain(eiServiceDomain);
 
 		//TKB 4.1	Uppdatering av engagemangsindex

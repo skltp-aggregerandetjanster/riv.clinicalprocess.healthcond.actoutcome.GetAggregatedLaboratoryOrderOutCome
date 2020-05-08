@@ -19,27 +19,18 @@
  */
 package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.integrationtest;
 
-import java.util.Date;
-import java.util.UUID;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.soitoolkit.commons.mule.util.ThreadSafeSimpleDateFormat;
 
-import riv.clinicalprocess.healthcond.actoutcome.enums._4.ResultCodeEnum;
-import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcome.v4.rivtabp21.GetLaboratoryOrderOutcomeResponderInterface;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
 import riv.clinicalprocess.healthcond.actoutcome._4.AccessControlHeaderType;
+import riv.clinicalprocess.healthcond.actoutcome._4.ContactInformationType;
 import riv.clinicalprocess.healthcond.actoutcome._4.HeaderType;
-import riv.clinicalprocess.healthcond.actoutcome._4.HealthcareProfessionalType;
 import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeBodyType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeType;
 import riv.clinicalprocess.healthcond.actoutcome._4.OrgUnitType;
-import riv.clinicalprocess.healthcond.actoutcome._4.PatientType;
-import riv.clinicalprocess.healthcond.actoutcome._4.PatientinformationType;
-import riv.clinicalprocess.healthcond.actoutcome._4.PersonIdType;
-import riv.clinicalprocess.healthcond.actoutcome._4.SourceType;
 //import riv.clinicalprocess.healthcond.actoutcome._4.ResultType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
@@ -77,46 +68,39 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 		LaboratoryOrderOutcomeType labOrderOutcome = new LaboratoryOrderOutcomeType();
 
 		HeaderType header = new HeaderType();
-		labOrderOutcome.setLaboratoryOrderOutcomeHeader(header);
+		labOrderOutcome.setHeader(header);
 		LaboratoryOrderOutcomeBodyType body = new LaboratoryOrderOutcomeBodyType();
-		labOrderOutcome.setLaboratoryOrderOutcomeBody(body);
-		
-		SourceType source = new SourceType();
+		labOrderOutcome.setBody(body);
+
 		IIType systemId = new IIType();
-		systemId.setRoot(logicalAddress);
-		systemId.setExtension("1.2.3");
-		source.setSystemId(systemId);
-		header.setSource(source);
-
-		PatientinformationType pinfo = new PatientinformationType();
-		body.setPatientinformation(pinfo);	
-		pinfo.setFodelsetidpunkt("12:12");
+		systemId.setRoot("1.2.3");
+		systemId.setExtension(logicalAddress);
+		header.setSourceSystemId(systemId);
 		
-		HealthcareProfessionalType hp = new HealthcareProfessionalType();
-		hp.setName("Dr Hpro");
-		hp.setId(logicalAddress);
+		ContactInformationType contactinfo = new ContactInformationType();
+		contactinfo.setText("Testvägen 3, 12345 GLOO");
+		body.setContactInformation(contactinfo);
 
-		OrgUnitType orgUnitType = new OrgUnitType();
-		orgUnitType.setName("Organisation 1");
+		OrgUnitType orgUnit = new OrgUnitType();
+		orgUnit.setName("Organisation 1");
 		IIType id = new IIType();
 		id.setRoot(logicalAddress);
 		id.setExtension("1.2.3");
-		orgUnitType.setId(id);
-
+		orgUnit.setId(id);
+		body.setRecipientUnit(orgUnit);
+		
 		AccessControlHeaderType ac = new AccessControlHeaderType();
 		header.setAccessControlHeader(ac);
 		
 		IIType patient = new IIType();
-		patient.setRoot(registeredResidentId);
-		patient.setExtension("1.2.752.129.2.1.3.1");
+		patient.setExtension(registeredResidentId);
+		patient.setRoot("1.2.752.129.2.1.3.1");
+		ac.setOriginalPatientId(patient);
 
-		PatientType person = new PatientType();
-		person.getId().add(patient);
-		ac.setPatient(person);
+		ac.setApprovedForPatient(true);
 
 		//Body start
-		body.setResultatkommentar("kommentar");
-		body.setResultatrapport("OK");
+		body.setText("Test av GLOO");
 
 		//Body end
 

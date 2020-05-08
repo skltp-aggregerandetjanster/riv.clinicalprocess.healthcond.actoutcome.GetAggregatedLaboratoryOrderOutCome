@@ -35,7 +35,7 @@ import org.w3c.dom.Node;
 
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeType;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.ObjectFactory;
-import riv.clinicalprocess.healthcond.actoutcome._4.PersonIdType;
+import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentType;
 import se.skltp.agp.service.api.QueryObject;
 import se.skltp.agp.test.producer.TestProducerDb;
@@ -58,12 +58,14 @@ public class QueryObjectFactoryTest {
 		//Create request
 		GetLaboratoryOrderOutcomeType request = new GetLaboratoryOrderOutcomeType();
 
-		PersonIdType personIdType = new PersonIdType();
-		personIdType.setId(TestProducerDb.TEST_RR_ID_ONE_HIT);
-		personIdType.setType("1.2.752.129.2.1.3.1");
+		IIType personIdType = new IIType();
+		personIdType.setExtension(TestProducerDb.TEST_RR_ID_ONE_HIT);
+		personIdType.setRoot("1.2.752.129.2.1.3.1");
 		request.setPatientId(personIdType);
 
-		request.setSourceSystemHSAId(TestProducerDb.TEST_LOGICAL_ADDRESS_1);
+		IIType systemHSAId = new IIType();
+		systemHSAId.setExtension(TestProducerDb.TEST_LOGICAL_ADDRESS_1);
+		request.setSourceSystemHSAId(systemHSAId);
 		//End create request
 
 		//Create FindContent request

@@ -45,7 +45,7 @@
     </wsdl:types>
     <wsdl:message name='GetLaboratoryOrderOutcomeRequest'>
         <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
-            <wsdl:documentation>The organisation number of the receiving insurance institution</wsdl:documentation>
+            <wsdl:documentation>The organisation number of the p</wsdl:documentation>
         </wsdl:part>
         <wsdl:part name='parameters' element='tjsr:GetLaboratoryOrderOutcome'/>
     </wsdl:message>

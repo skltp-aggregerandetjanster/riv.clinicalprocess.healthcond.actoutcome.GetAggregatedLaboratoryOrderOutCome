@@ -17,24 +17,32 @@
  specific language governing permissions and limitations
  under the License.
  -->		
-<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tns='urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4' xmlns:core='urn:riv:clinicalprocess:healthcond:actoutcome:4' targetNamespace='urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4' elementFormDefault='qualified' attributeFormDefault='unqualified' version='4.0'>
-  <xs:import schemaLocation='../../core_components/clinicalprocess_healthcond_actoutcome_4.0.xsd' namespace='urn:riv:clinicalprocess:healthcond:actoutcome:4' />
-  <xs:element name='GetLaboratoryOrderOutcome' type='tns:GetLaboratoryOrderOutcomeType' />
-  <xs:element name='GetLaboratoryOrderOutcomeResponse' type='tns:GetLaboratoryOrderOutcomeResponseType' />
-  <xs:complexType name='GetLaboratoryOrderOutcomeType'>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
+  xmlns:core="urn:riv:clinicalprocess:healthcond:actoutcome:4"
+  targetNamespace="urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
+  elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
+  <xs:import schemaLocation="../../core_components/clinicalprocess_healthcond_actoutcome_4.0.xsd"
+    namespace="urn:riv:clinicalprocess:healthcond:actoutcome:4"/>
+  <xs:element name="GetLaboratoryOrderOutcome" type="tns:GetLaboratoryOrderOutcomeType"/>
+  <xs:element name="GetLaboratoryOrderOutcomeResponse"
+    type="tns:GetLaboratoryOrderOutcomeResponseType"/>
+  <xs:complexType name="GetLaboratoryOrderOutcomeType">
     <xs:sequence>
-      <xs:element name="careUnitHSAId" type="core:HSAIdType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="careGiverHSAId" type="core:HSAIdType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="patientId" type="core:PersonIdType"/>
+      <xs:element name="careUnitHSAId" type="core:IIType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="careGiverHSAId" type="core:IIType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="patientId" type="core:IIType"/>
       <xs:element name="datePeriod" type="core:DatePeriodType" minOccurs="0"/>
-      <xs:element name="sourceSystemHSAId" type="core:HSAIdType" minOccurs="0"/>
-      <xs:element name="careContactId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="sourceSystemHSAId" type="core:IIType" minOccurs="0"/>
+      <xs:element minOccurs="0" name="specimenIdentifier" type="core:IIType" maxOccurs="unbounded"/>
+      <xs:element minOccurs="0" name="referralIdentifier" type="core:IIType" maxOccurs="unbounded"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name='GetLaboratoryOrderOutcomeResponseType'>
+  <xs:complexType name="GetLaboratoryOrderOutcomeResponseType">
     <xs:sequence>
-      <xs:element name="laboratoryOrderOutcome" type="core:LaboratoryOrderOutcomeType" minOccurs='0' maxOccurs="unbounded"/>
+      <xs:element name="laboratoryOrderOutcome" type="core:LaboratoryOrderOutcomeType" minOccurs="0"
+        maxOccurs="unbounded"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>

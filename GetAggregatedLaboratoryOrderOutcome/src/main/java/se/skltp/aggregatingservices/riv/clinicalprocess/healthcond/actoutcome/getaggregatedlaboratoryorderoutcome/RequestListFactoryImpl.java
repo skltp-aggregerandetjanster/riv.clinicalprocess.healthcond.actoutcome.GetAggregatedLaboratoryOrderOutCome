@@ -29,6 +29,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeType;
 import se.skltp.agp.riv.itintegration.engagementindex.findcontentresponder.v1.FindContentResponseType;
 import se.skltp.agp.riv.itintegration.engagementindex.v1.EngagementType;
@@ -62,8 +63,10 @@ public class RequestListFactoryImpl implements RequestListFactory {
 
         GetLaboratoryOrderOutcomeType originalRequest = (GetLaboratoryOrderOutcomeType) qo.getExtraArg();
         
-        String requestCareUnit = originalRequest.getSourceSystemHSAId();
-
+        String requestCareUnit = null;
+        if(originalRequest.getSourceSystemHSAId() != null) 
+        	requestCareUnit = originalRequest.getSourceSystemHSAId().getExtension();
+        	
         FindContentResponseType eiResp = (FindContentResponseType) src;
         List<EngagementType> inEngagements = eiResp.getEngagement();
 
@@ -87,7 +90,7 @@ public class RequestListFactoryImpl implements RequestListFactory {
         for (Entry<String, List<String>> entry : sourceSystem_pdlUnitList_map.entrySet()) {
             String sourceSystem = entry.getKey();
             log.info("Calling source system using logical address {} for subject of care id {}", 
-                      sourceSystem, originalRequest.getPatientId().getId());
+                      sourceSystem, originalRequest.getPatientId().getExtension());
             GetLaboratoryOrderOutcomeType request = originalRequest;
             Object[] reqArr = new Object[] { sourceSystem, request };
             reqList.add(reqArr);

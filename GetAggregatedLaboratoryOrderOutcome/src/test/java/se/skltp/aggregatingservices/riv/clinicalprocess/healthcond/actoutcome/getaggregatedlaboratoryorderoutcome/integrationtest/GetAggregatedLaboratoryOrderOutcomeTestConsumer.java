@@ -26,10 +26,10 @@ import javax.xml.ws.Holder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcome.v4.rivtabp21.GetLaboratoryOrderOutcomeResponderInterface;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeType;
-import riv.clinicalprocess.healthcond.actoutcome._4.PersonIdType;
 import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.getaggregatedlaboratoryorderoutcome.GetAggregatedLaboratoryOrderOutcomeMuleServer;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractTestConsumer;
@@ -63,9 +63,9 @@ public class GetAggregatedLaboratoryOrderOutcomeTestConsumer extends AbstractTes
 
 		GetLaboratoryOrderOutcomeType request = new GetLaboratoryOrderOutcomeType();
 
-		PersonIdType personIdType = new PersonIdType();
-		personIdType.setId(registeredResidentId);
-		personIdType.setType("1.2.752.129.2.1.3.1");
+		IIType personIdType = new IIType();
+		personIdType.setExtension(registeredResidentId);
+		personIdType.setRoot("1.2.752.129.2.1.3.1");
 		request.setPatientId(personIdType);
 
 		GetLaboratoryOrderOutcomeResponseType response = _service.getLaboratoryOrderOutcome(logicalAddress, request);

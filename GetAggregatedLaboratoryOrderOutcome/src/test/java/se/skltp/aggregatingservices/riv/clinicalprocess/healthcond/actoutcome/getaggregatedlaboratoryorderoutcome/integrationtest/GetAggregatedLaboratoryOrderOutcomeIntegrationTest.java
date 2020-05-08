@@ -207,8 +207,8 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 
 		for (int i = 0; i < testData.length; i++) {
 			LaboratoryOrderOutcomeType responseElement = response.getLaboratoryOrderOutcome().get(i);
-			assertEquals(registeredResidentId, responseElement.getLaboratoryOrderOutcomeHeader().getAccessControlHeader().getPatient().getId().get(0).getRoot());
-			assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getLaboratoryOrderOutcomeHeader().getSource().getSystemId().getRoot());
+			assertEquals(registeredResidentId, responseElement.getHeader().getAccessControlHeader().getOriginalPatientId().getExtension());
+			assertEquals(testData[i].getExpectedLogicalAddress(), responseElement.getHeader().getSourceSystemId().getExtension());
 		}
 		
 		/*

@@ -43,9 +43,9 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducer implements GetLabor
 
 	@Override
 	public GetLaboratoryOrderOutcomeResponseType getLaboratoryOrderOutcome(String logicalAddress, GetLaboratoryOrderOutcomeType request) {
-		log.info("### Virtual service for GetLaboratoryOrderOutcome call the source system with logical address: {} and patientId: {}", logicalAddress, request.getPatientId().getId());
+		log.info("### Virtual service for GetLaboratoryOrderOutcome call the source system with logical address: {} and patientId: {}", logicalAddress, request.getPatientId().getExtension());
 
-		GetLaboratoryOrderOutcomeResponseType response = (GetLaboratoryOrderOutcomeResponseType)testDb.processRequest(logicalAddress, request.getPatientId().getId());
+		GetLaboratoryOrderOutcomeResponseType response = (GetLaboratoryOrderOutcomeResponseType)testDb.processRequest(logicalAddress, request.getPatientId().getExtension());
         if (response == null) {
             log.info("nothing was found - returning an empty GetLaboratoryOrderOutcomeResponse");
         	response = new GetLaboratoryOrderOutcomeResponseType();
@@ -58,7 +58,7 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducer implements GetLabor
             log.info("response.result.resultCode:null");
         }
 
-        log.info("### Virtual service got {} lab responses in the reply from the source system with logical address: {} and patientId: {}", new Object[] {response.getLaboratoryOrderOutcome().size(), logicalAddress, request.getPatientId().getId()});
+        log.info("### Virtual service got {} lab responses in the reply from the source system with logical address: {} and patientId: {}", new Object[] {response.getLaboratoryOrderOutcome().size(), logicalAddress, request.getPatientId().getExtension()});
 
 		return response;
 	}
