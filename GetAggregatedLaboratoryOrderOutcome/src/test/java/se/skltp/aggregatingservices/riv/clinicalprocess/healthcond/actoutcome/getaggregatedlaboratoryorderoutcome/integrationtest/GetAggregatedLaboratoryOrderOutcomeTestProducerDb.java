@@ -31,7 +31,6 @@ import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeBodyType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeType;
 import riv.clinicalprocess.healthcond.actoutcome._4.OrgUnitType;
-//import riv.clinicalprocess.healthcond.actoutcome._4.ResultType;
 import se.skltp.agp.test.producer.TestProducerDb;
 
 public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProducerDb {
@@ -78,7 +77,7 @@ public class GetAggregatedLaboratoryOrderOutcomeTestProducerDb extends TestProdu
 		header.setSourceSystemId(systemId);
 		
 		ContactInformationType contactinfo = new ContactInformationType();
-		contactinfo.setText("Testv‰gen 3, 12345 GLOO");
+		contactinfo.setText("Testv√§gen 3, 12345 GLOO");
 		body.setContactInformation(contactinfo);
 
 		OrgUnitType orgUnit = new OrgUnitType();
