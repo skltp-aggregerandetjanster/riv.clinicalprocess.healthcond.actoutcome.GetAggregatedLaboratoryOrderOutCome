@@ -1,33 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
 DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOING!
 [soi-toolkit.gen.version=0.6.2-SNAPSHOT]
 [soi-toolkit.gen.type=services]
 [soi-toolkit.gen.createDate=2014-10-06T12:43:33.373+02:00]
 [soi-toolkit.gen.artifactId=GetAggregatedObservation]
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>se.skltp.commons</groupId>
-        <artifactId>skltp-commons-mule-parent</artifactId>
-        <version>2.0.3</version>
-    </parent>
+  <parent>
+    <artifactId>agp-parent</artifactId>
+    <groupId>se.skltp.agp</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
-		<artifactId>GetAggregatedLaboratoryOrderOutcome-parent</artifactId>
-		<version>2.0.2-SNAPSHOT</version>
+		<artifactId>GetLaboratoryOrderOutcome</artifactId>
+		<version>2.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>GetAggregatedLaboratoryOrderOutcome-parent</name>
+    <name>GetLaboratoryOrderOutcome</name>
 
-    <properties>
-        <mule.version>3.7.0</mule.version>
-        <skltp.agp.version>2.3.4</skltp.agp.version>
-        <!-- Turn off strict checking of javadoc tags for Java 8 -->
-        <additionalparam>-Xdoclint:none</additionalparam>
-    </properties>
+  <properties>
+    <agp-parent.version>0.0.1-SNAPSHOT</agp-parent.version>
+    <apache-cfx.version>3.2.7</apache-cfx.version>
+  </properties>
 
     <scm>
 			<url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome</url>
@@ -36,59 +33,10 @@ DON'T CHANGE THE CONTENT OF THIS COMMENT UNLESS YOU REALLY KNOW WHAT YOU ARE DOI
       <tag>HEAD</tag>
   	</scm>
 
-    <modules>
-      <module>GetAggregatedLaboratoryOrderOutcome</module>
-      <module>GetAggregatedLaboratoryOrderOutcome-teststub</module>
-	  <module>GetAggregatedLaboratoryOrderOutcome-schemas</module>
-    </modules>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-            <plugin>
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <version>1.10.b1</version>
-                <configuration>
-                    <properties>
-                        <year>2014</year>
-                        <copyright>Inera AB, &lt;http://inera.se/&gt;</copyright>
-                        <product>SKLTP</product>
-                    </properties>
-                    <strictCheck>true</strictCheck>
-                    <basedir>${basedir}</basedir>
-                    <header>https://raw.githubusercontent.com/skltp/license/develop/header.txt</header>
-                    <encoding>UTF-8</encoding>
-                    <includes>
-                        <include>src/main/**</include>
-                        <include>src/test/**</include>
-                    </includes>
-                    <excludes>
-                        <exclude>**/*.xsd</exclude>
-                        <exclude>**/*.wsdl</exclude>
-                        <exclude>**/*.xml</exclude>
-                        <exclude>**/*.dtd</exclude>
-                        <exclude>**/*.jks</exclude>
-                        <exclude>**/*.pem</exclude>
-                    </excludes>
-                    <useDefaultExcludes>true</useDefaultExcludes>
-                    <mapping>
-                        <tag>DYNASCRIPT_STYLE</tag>
-                    </mapping>
-                    <useDefaultMapping>true</useDefaultMapping>
-                </configuration>
-            </plugin>  
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-				    <tagNameFormat>v@{project.version}</tagNameFormat>
-                   	<localCheckout>true</localCheckout>
-                </configuration>
-            </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-  </project>
+  <modules>  <module>GetLaboratoryOrderOutcome-schemas</module>
+    <module>GetLaboratoryOrderOutcome-teststub</module>
+    <module>GetLaboratoryOrderOutcome-main</module>
+    <module>GetLaboratoryOrderOutcome-runner</module>
+  </modules>
+</project>
