@@ -59,15 +59,13 @@ import se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.ge
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusRecordType;
 import se.skltp.agp.riv.interoperability.headers.v1.ProcessingStatusType;
 import se.skltp.agp.test.consumer.AbstractAggregateIntegrationTest;
-import se.skltp.agp.test.consumer.TestData;
+import se.skltp.agp.test.consumer.ExpectedTestData;
 import se.skltp.agp.test.producer.EngagemangsindexTestProducerLogger;
 import se.skltp.agp.test.producer.TestProducerLogger;
+import se.skltp.agp.cache.TakCacheBean;
 
 public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends AbstractAggregateIntegrationTest {
 
-	public GetAggregatedLaboratoryOrderOutcomeIntegrationTest() {
-		super(rb.getString("TAK_TJANSTEKONTRAKT"));
-	}
 	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(GetAggregatedLaboratoryOrderOutcomeIntegrationTest.class);
 
@@ -91,6 +89,13 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
             "teststub-non-default-services/tak-teststub-service.xml";
     }
 
+    @Before
+    public void loadTakCache() throws Exception {
+    	GetAggregatedLaboratoryOrderOutcomeTestConsumer consumer = new GetAggregatedLaboratoryOrderOutcomeTestConsumer(DEFAULT_SERVICE_ADDRESS, "", "", "");
+        final TakCacheBean takCache = (TakCacheBean) muleContext.getRegistry().lookupObject("takCacheBean");
+        takCache.updateCache();
+    }
+        
 	/**
 	 * Perform a test that is expected to return zero hits
 	 */
@@ -135,7 +140,7 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 	 */
     @Test
     public void test_ok_one_hit() {
-    	List<ProcessingStatusRecordType> statusList = doTest(TEST_RR_ID_ONE_HIT, 2, new TestData(TEST_BO_ID_ONE_HIT, TEST_LOGICAL_ADDRESS_1));
+    	List<ProcessingStatusRecordType> statusList = doTest(TEST_RR_ID_ONE_HIT, 2, new ExpectedTestData(TEST_BO_ID_ONE_HIT, TEST_LOGICAL_ADDRESS_1));
     	assertProcessingStatusDataFromSource(statusList.get(0), TEST_LOGICAL_ADDRESS_1);
     }
 
@@ -147,9 +152,9 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
 
     	// Setup call and verify the response, expect one booking from source #1, two from source #2 and a timeout from source #3
     	List<ProcessingStatusRecordType> statusList = doTest(TEST_RR_ID_MANY_HITS, 3,
-    		new TestData(TEST_BO_ID_MANY_HITS_1, TEST_LOGICAL_ADDRESS_1),
-    		new TestData(TEST_BO_ID_MANY_HITS_2, TEST_LOGICAL_ADDRESS_2),
-    		new TestData(TEST_BO_ID_MANY_HITS_3, TEST_LOGICAL_ADDRESS_2));
+    		new ExpectedTestData(TEST_BO_ID_MANY_HITS_1, TEST_LOGICAL_ADDRESS_1),
+    		new ExpectedTestData(TEST_BO_ID_MANY_HITS_2, TEST_LOGICAL_ADDRESS_2),
+    		new ExpectedTestData(TEST_BO_ID_MANY_HITS_3, TEST_LOGICAL_ADDRESS_2));
 
     	// Verify the Processing Status, expect ok from source system #1 and #2 but a timeout from #3
 		assertProcessingStatusDataFromSource(statusList.get(0), TEST_LOGICAL_ADDRESS_1);
@@ -177,7 +182,7 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
      * @param testData
      * @return
      */
-	private List<ProcessingStatusRecordType> doTest(String registeredResidentId, int expectedProcessingStatusSize, TestData... testData) {
+	private List<ProcessingStatusRecordType> doTest(String registeredResidentId, int expectedProcessingStatusSize, ExpectedTestData... testData) {
 		return doTest(registeredResidentId, SAMPLE_SENDER_ID, SAMPLE_ORIGINAL_CONSUMER_HSAID, SAMPLE_CORRELATION_ID, expectedProcessingStatusSize, testData);
     }
 
@@ -191,7 +196,7 @@ public class GetAggregatedLaboratoryOrderOutcomeIntegrationTest extends Abstract
      * @param testData
      * @return
      */
-	private List<ProcessingStatusRecordType> doTest(String registeredResidentId, String senderId, String originalConsumerHsaId, String correlationId, int expectedProcessingStatusSize, TestData... testData) {
+	private List<ProcessingStatusRecordType> doTest(String registeredResidentId, String senderId, String originalConsumerHsaId, String correlationId, int expectedProcessingStatusSize, ExpectedTestData... testData) {
 
 		// Setup and perform the call to the web service
 		GetAggregatedLaboratoryOrderOutcomeTestConsumer consumer = new GetAggregatedLaboratoryOrderOutcomeTestConsumer(DEFAULT_SERVICE_ADDRESS, senderId, originalConsumerHsaId, correlationId);
