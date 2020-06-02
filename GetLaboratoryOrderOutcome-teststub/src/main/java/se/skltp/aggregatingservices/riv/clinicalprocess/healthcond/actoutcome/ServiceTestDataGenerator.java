@@ -3,17 +3,13 @@ package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome;
 import lombok.extern.log4j.Log4j2;
 import org.apache.cxf.message.MessageContentsList;
 import org.springframework.stereotype.Service;
-import se.skltp.aggregatingservices.data.ProducerTestDataGenerator;
 import riv.clinicalprocess.healthcond.actoutcome._4.AccessControlHeaderType;
+import riv.clinicalprocess.healthcond.actoutcome._4.ContactInformationType;
 import riv.clinicalprocess.healthcond.actoutcome._4.HeaderType;
-import riv.clinicalprocess.healthcond.actoutcome._4.HealthcareProfessionalType;
 import riv.clinicalprocess.healthcond.actoutcome._4.IIType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeBodyType;
 import riv.clinicalprocess.healthcond.actoutcome._4.LaboratoryOrderOutcomeType;
 import riv.clinicalprocess.healthcond.actoutcome._4.OrgUnitType;
-import riv.clinicalprocess.healthcond.actoutcome._4.PatientType;
-import riv.clinicalprocess.healthcond.actoutcome._4.PatientinformationType;
-import riv.clinicalprocess.healthcond.actoutcome._4.SourceType;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeType;
 import se.skltp.aggregatingservices.data.ProducerTestDataGenerator;
@@ -23,81 +19,68 @@ import se.skltp.aggregatingservices.data.ProducerTestDataGenerator;
 @Service
 public class ServiceTestDataGenerator extends ProducerTestDataGenerator {
 
-	@Override
-	public String getPatientId(MessageContentsList messageContentsList) {
-		GetLaboratoryOrderOutcomeType request = (GetLaboratoryOrderOutcomeType) messageContentsList.get(1);
-		return request.getPatientId().getId();
-	}
+  @Override
+  public String getPatientId(MessageContentsList messageContentsList) {
+    GetLaboratoryOrderOutcomeType request = (GetLaboratoryOrderOutcomeType) messageContentsList.get(1);
+    return request.getPatientId().getExtension();
+  }
 
-	@Override
-	public Object createResponse(Object... responseItems) {
-		log.info("Creating a response with {} items", responseItems.length);
-		GetLaboratoryOrderOutcomeResponseType response = new GetLaboratoryOrderOutcomeResponseType();
-		for (int i = 0; i < responseItems.length; i++) {
-			response.getLaboratoryOrderOutcome().add((LaboratoryOrderOutcomeType)responseItems[i]);
-		}
+  @Override
+  public Object createResponse(Object... responseItems) {
+    log.info("Creating a response with {} items", responseItems.length);
+    GetLaboratoryOrderOutcomeResponseType response = new GetLaboratoryOrderOutcomeResponseType();
+    for (int i = 0; i < responseItems.length; i++) {
+      response.getLaboratoryOrderOutcome().add((LaboratoryOrderOutcomeType) responseItems[i]);
+    }
 
-		log.info("response.toString:" + response.toString());
+    log.info("response.toString:" + response.toString());
 
-		return response;
-	}
+    return response;
+  }
 
-	@Override
-	public Object createResponseItem(String logicalAddress, String registeredResidentId, String businessObjectId, String time) {
+  @Override
+  public Object createResponseItem(String logicalAddress, String registeredResidentId, String businessObjectId, String time) {
 
-		log.debug("Created LaboratoryOrderOutcomeType for logical-address {}, registeredResidentId {} and businessObjectId {}",
-				new Object[] {logicalAddress, registeredResidentId, businessObjectId});
+    log.debug("Created LaboratoryOrderOutcomeType for logical-address {}, registeredResidentId {} and businessObjectId {}",
+        new Object[]{logicalAddress, registeredResidentId, businessObjectId});
 
-		LaboratoryOrderOutcomeType labOrderOutcome = new LaboratoryOrderOutcomeType();
+    LaboratoryOrderOutcomeType labOrderOutcome = new LaboratoryOrderOutcomeType();
 
-		HeaderType header = new HeaderType();
-		labOrderOutcome.setLaboratoryOrderOutcomeHeader(header);
-		LaboratoryOrderOutcomeBodyType body = new LaboratoryOrderOutcomeBodyType();
-		labOrderOutcome.setLaboratoryOrderOutcomeBody(body);
+    HeaderType header = new HeaderType();
+    labOrderOutcome.setHeader(header);
+    LaboratoryOrderOutcomeBodyType body = new LaboratoryOrderOutcomeBodyType();
+    labOrderOutcome.setBody(body);
 
-		SourceType source = new SourceType();
-		IIType systemId = new IIType();
-		systemId.setRoot(logicalAddress);
-		systemId.setExtension("1.2.3");
-		source.setSystemId(systemId);
-		header.setSource(source);
+    IIType systemId = new IIType();
+    systemId.setRoot("1.2.3");
+    systemId.setExtension(logicalAddress);
+    header.setSourceSystemId(systemId);
 
-		PatientinformationType pinfo = new PatientinformationType();
-		body.setPatientinformation(pinfo);
-		pinfo.setFodelsetidpunkt("12:12");
+    ContactInformationType contactinfo = new ContactInformationType();
+    contactinfo.setText("Testv�gen 3, 12345 GLOO");
+    body.setContactInformation(contactinfo);
 
-		HealthcareProfessionalType hp = new HealthcareProfessionalType();
-		hp.setName("Dr Hpro");
-		hp.setId(logicalAddress);
+    OrgUnitType orgUnit = new OrgUnitType();
+    orgUnit.setName("Organisation 1");
+    IIType id = new IIType();
+    id.setRoot(logicalAddress);
+    id.setExtension("1.2.3");
+    orgUnit.setId(id);
+    body.setRecipientUnit(orgUnit);
 
-		OrgUnitType orgUnitType = new OrgUnitType();
-		orgUnitType.setName("Organisation 1");
-		IIType id = new IIType();
-		id.setRoot(logicalAddress);
-		id.setExtension("1.2.3");
-		orgUnitType.setId(id);
+    AccessControlHeaderType ac = new AccessControlHeaderType();
+    header.setAccessControlHeader(ac);
 
-		AccessControlHeaderType ac = new AccessControlHeaderType();
-		header.setAccessControlHeader(ac);
+    IIType patient = new IIType();
+    patient.setExtension(registeredResidentId);
+    patient.setRoot("1.2.752.129.2.1.3.1");
+    ac.setOriginalPatientId(patient);
 
-		IIType patient = new IIType();
-		patient.setRoot(registeredResidentId);
-		patient.setExtension("1.2.752.129.2.1.3.1");
+    ac.setApprovedForPatient(true);
 
-		PatientType person = new PatientType();
-		person.getId().add(patient);
-		ac.setPatient(person);
+    //Body start
+    body.setText("Test av GLOO");
 
-		//Body start
-		body.setResultatkommentar("kommentar");
-		body.setResultatrapport("OK");
-
-		//Body end
-
-		//response.setCareUnit(logicalAddress);
-		//response.setSubjectOfCareId(registeredResidentId);
-		//response.setSenderRequestId(businessObjectId);
-
-		return labOrderOutcome;
-	}
+    return labOrderOutcome;
+  }
 }

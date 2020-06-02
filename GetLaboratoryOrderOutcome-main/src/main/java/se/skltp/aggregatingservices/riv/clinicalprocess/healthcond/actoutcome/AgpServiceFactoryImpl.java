@@ -12,12 +12,12 @@ public class AgpServiceFactoryImpl extends
 
   @Override
   public String getPatientId(GetLaboratoryOrderOutcomeType queryObject) {
-    return queryObject.getPatientId().getId();
+    return queryObject.getPatientId().getExtension();
   }
 
   @Override
   public String getSourceSystemHsaId(GetLaboratoryOrderOutcomeType queryObject) {
-    return queryObject.getSourceSystemHSAId();
+    return queryObject.getSourceSystemHSAId()==null ? null : queryObject.getSourceSystemHSAId().getExtension();
   }
 
   @Override
