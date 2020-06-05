@@ -8,12 +8,12 @@ import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcome.v4.ri
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "getaggregatedlaboratoryorderoutcome.v4")
-public class AgpServiceConfiguration extends
+public class GLAOOAgpServiceConfiguration extends
     se.skltp.aggregatingservices.configuration.AgpServiceConfiguration {
 
   public static final String SCHEMA_PATH = "/schemas/clinicalprocess-healthcond-actoutcome/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeInteraction_4.0_RIVTABP21.wsdl";
 
-  public AgpServiceConfiguration() {
+  public GLAOOAgpServiceConfiguration() {
 
     setServiceName("GetLaboratoryOrderOutcome.V4");
     setTargetNamespace(
@@ -38,7 +38,7 @@ public class AgpServiceConfiguration extends
         "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4");
 
     // Set service factory
-    setServiceFactoryClass(AgpServiceFactoryImpl.class.getName());
+    setServiceFactoryClass(GLAOOAgpServiceFactoryImpl.class.getName());
   }
 
 }
