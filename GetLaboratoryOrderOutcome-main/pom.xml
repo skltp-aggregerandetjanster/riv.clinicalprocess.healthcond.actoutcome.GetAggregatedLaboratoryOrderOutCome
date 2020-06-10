@@ -29,6 +29,13 @@
     </dependency>
 
     <dependency>
+      <groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
+      <artifactId>GetAggregatedLaboratoryOrderOutcome-teststub</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
