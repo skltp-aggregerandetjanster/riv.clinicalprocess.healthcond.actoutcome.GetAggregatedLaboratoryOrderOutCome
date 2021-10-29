@@ -1,16 +1,14 @@
 package se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome.v4;
 
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.junit.jupiter.api.BeforeAll;
 import riv.clinicalprocess.healthcond.actoutcome.getlaboratoryorderoutcomeresponder.v4.GetLaboratoryOrderOutcomeResponseType;
 import se.skltp.aggregatingservices.api.AgpServiceFactory;
 import se.skltp.aggregatingservices.tests.CreateFindContentTest;
 import se.skltp.aggregatingservices.data.TestDataGenerator;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 public class GLOOCreateFindContentTest extends CreateFindContentTest {
 
   private static GLOOAgpServiceConfiguration configuration = new GLOOAgpServiceConfiguration();
@@ -21,7 +19,7 @@ public class GLOOCreateFindContentTest extends CreateFindContentTest {
     super(testDataGenerator, agpServiceFactory, configuration);
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void before() {
     configuration = new GLOOAgpServiceConfiguration();
     agpServiceFactory = new GLOOAgpServiceFactoryImpl();

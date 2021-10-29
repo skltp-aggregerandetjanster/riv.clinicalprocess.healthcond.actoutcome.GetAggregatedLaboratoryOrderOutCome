@@ -6,17 +6,17 @@
   <parent>
     <artifactId>agp-parent</artifactId>
     <groupId>se.skltp.agp</groupId>
-    <version>3.0.0-RC1</version>
+    <version>3.0.0</version>
   </parent>
 
   	<groupId>se.skltp.aggregatingservices.riv.clinicalprocess.healthcond.actoutcome</groupId>
 		<artifactId>GetAggregatedLaboratoryOrderOutcome-v4</artifactId>
-		<version>3.0.0</version>
+		<version>3.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>GetAggregatedLaboratoryOrderOutcome-v4</name>
 
   <properties>
-    <agp-parent.version>3.0.0-RC1</agp-parent.version>
+    <agp-parent.version>3.0.0</agp-parent.version>
     <apache-cfx.version>3.2.7</apache-cfx.version>
   </properties>
 
@@ -24,8 +24,38 @@
       <url>https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome</url>
       <connection>scm:git:https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome.git</connection>
       <developerConnection>scm:git:https://github.com/skltp-aggregerandetjanster/riv.clinicalprocess.healthcond.actoutcome.GetAggregatedLaboratoryOrderOutcome.git</developerConnection>
-      <tag>GetAggregatedLaboratoryOrderOutcome-v4-3.0.0</tag>
+      <tag>HEAD</tag>
   	</scm>
+
+  <distributionManagement>
+    <repository>
+      <id>release-nexus</id>
+      <name>Release Nexus</name>
+      <url>${releases-nexus-url}</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshot-nexus</id>
+      <name>Snapshot Nexus</name>
+      <url>${snapshot-nexus-url}</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.1</version>
+          <configuration>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <tagNameFormat>v@{project.version}</tagNameFormat>
+            <localCheckout>true</localCheckout>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
   <modules>
     <module>GetAggregatedLaboratoryOrderOutcome-v4-schemas</module>
